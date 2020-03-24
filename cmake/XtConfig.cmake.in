@@ -1,0 +1,15 @@
+get_filename_component(Xt_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+
+if(NOT TARGET Xt::Xt)
+  include("${Xt_CMAKE_DIR}/XtTargets.cmake")
+endif()
+
+#=================================================================================
+# NOTE: the following code is not necessary, can be deleted in a target based system
+
+@PACKAGE_INIT@
+
+set_and_check(Xt_INCLUDE_DIR "@PACKAGE_Xt_INCLUDE_INSTALL_DIR@")
+set_and_check(Xt_LIBRARIES_DIR "@PACKAGE_Xt_LIB_INSTALL_DIR@")
+
+check_required_components(Xt)
