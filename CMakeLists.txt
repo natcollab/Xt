@@ -40,7 +40,7 @@ target_include_directories(Xt
 
 target_link_libraries(Xt
   INTERFACE  $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/lib/libXtTraderApi.so>
-             $<INSTALL_INTERFACE:${Xt_LIB_INSTALL_DIR}/libXtTraderApi.so>
+             $<INSTALL_INTERFACE:$<INSTALL_PREFIX>/${Xt_LIB_INSTALL_DIR}/libXtTraderApi.so>
   )
 
 #=================================================================================
@@ -60,7 +60,6 @@ install(DIRECTORY lib/
 
 install(TARGETS Xt EXPORT Xt_export)
 
-# TODO: library path in export target file is relative path, which is not correct
 install(EXPORT Xt_export
   NAMESPACE Xt::
   FILE XtTargets.cmake
